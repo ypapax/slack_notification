@@ -9,7 +9,7 @@ import (
 
 func main() {
 	logrus.SetReportCaller(true)
-	for _, msg := range []string{":fearful: bad",":thumbsup: ok", ":crescent_moon: Hello from <https://github.com/ashwanthkumar/slack-go-webhook|slack-go-webhook>, a Go-Lang library to send slack webhook messages.\n<https://golangschool.com/wp-content/uploads/golang-teach.jpg|golang-img>"} {
+	for _, msg := range []string{":fearful: bad", ":thumbsup: ok", ":crescent_moon: Hello from <https://github.com/ashwanthkumar/slack-go-webhook|slack-go-webhook>, a Go-Lang library to send slack webhook messages.\n<https://golangschool.com/wp-content/uploads/golang-teach.jpg|golang-img>"} {
 		if err := MessageToSlack(msg); err != nil {
 			logrus.Errorf("%+v", err)
 		} else {
@@ -26,8 +26,8 @@ func MessageToSlack(msg string) error {
 		return errors.Errorf("no env var %+v", env)
 	}
 	payload := slack.Payload{
-		Text:        msg,
-		Username:    "robot",
+		Text:     msg,
+		Username: "robot",
 	}
 	err := slack.Send(webhookUrl, "", payload)
 	if len(err) > 0 {
